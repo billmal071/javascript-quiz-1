@@ -34,6 +34,7 @@ function setNextQuestion() {
     resetState()
     showQuestion(shuffledQuestions[currentQuestionIndex])
     questionNum.innerHTML = currentQuestionIndex + 1
+    answerButtonsElement.classList.remove('disable')
 }
 
 function showQuestion(question) {
@@ -78,6 +79,9 @@ function selectAnswer(e) {
     if (selectedButton.dataset = correct) {
         countRightAnswers++;
         // +1, change it if you need +10, +25 etc
+        selectedButton.classList.add('disable')//disable the corect option from being clicked more than once
+    } else {
+        answerButtonsElement.classList.add('disable')
     }
     //show score
     scoreKeeper.innerHTML = countRightAnswers + " out of " + (currentQuestionIndex + 1);
